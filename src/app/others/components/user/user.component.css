@@ -1,0 +1,15 @@
+.Pages__item {
+    color: #EBF2FB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0 solid #000000;
+    border-radius: 17px 17px 17px 17px;
+    box-shadow: 10px 10px 5px 0 rgba(62,71,69,1);
+    width: 30rem;
+    max-width: 100%;
+    background-color: #1c9fe6;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    padding: 1rem;
+}

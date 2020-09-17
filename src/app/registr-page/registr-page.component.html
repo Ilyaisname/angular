@@ -1,0 +1,123 @@
+<div class="rg-Form__container">
+  <form class="rg-form" [formGroup]="form" (ngSubmit)="submit()">
+    <h2 class="Form__header">Регистрация</h2>
+    <div
+      class="Input"
+      [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}"
+    >
+      <input
+        type="text"
+        placeholder="name"
+        id="name"
+        formControlName="name"
+      />
+      <span
+        class="input-error-message"
+        *ngIf="form.get('name').touched && form.get('name').invalid"
+      >
+        <small *ngIf="form.get('name').errors.required">
+          Введите имя
+        </small>
+
+      </span>
+    </div>
+    <div
+      class="Input"
+      [ngClass]="{invalid: form.get('secondName').touched && form.get('secondName').invalid}"
+    >
+      <input
+        type="text"
+        placeholder="secondName"
+        id="secondName"
+        formControlName="secondName"
+      />
+      <span
+        class="input-error-message"
+        *ngIf="form.get('secondName').touched && form.get('secondName').invalid"
+      >
+        <small *ngIf="form.get('secondName').errors.required">
+          Введите фамилию
+        </small>
+
+      </span>
+    </div>
+    <div
+      class="Input"
+      [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+    >
+      <input
+        type="email"
+        placeholder="email"
+        id="email"
+        formControlName="email"
+      />
+      <span
+        class="input-error-message"
+        *ngIf="form.get('email').touched && form.get('email').invalid"
+      >
+        <small *ngIf="form.get('email').errors.required">
+          Поле не должно быть пустым
+        </small>
+        <small *ngIf="form.get('email').errors.email">
+          Введите корректный адресс электронной почты
+        </small>
+      </span>
+    </div>
+    <div
+      class="Input"
+      [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+    >
+      <input
+        type="password"
+        placeholder="input password"
+        id="password"
+        formControlName="password"
+      />
+      <span
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+        class="input-error-message"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          Поле не должно быть пустым
+        </small>
+        <small *ngIf="form.get('password').errors.minlength">
+          Пароль должен быть не меньше {{form.get('password').errors.minlength.requiredLength}} символов
+        </small>
+      </span>
+    </div>
+    <div
+      class="Input"
+      [ngClass]="{invalid: form.get('confirmPassword').touched && form.get('confirmPassword').value !== form.get('password').value}"
+    >
+      <input
+        type="password"
+        placeholder="confirmPassword"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+      />
+      <span
+        *ngIf="form.get('confirmPassword').touched && form.get('confirmPassword').invalid"
+        class="input-error-message"
+      >
+        <small *ngIf="form.get('confirmPassword').errors.required && form.get('confirmPassword').touched">
+          Поле не должно быть пустым
+        </small>
+        <small *ngIf="form.get('confirmPassword').value !== form.get('password').value">
+          Пароли не совпадают
+        </small>
+      </span>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn_color-yellow sz"
+      [disabled]="form.invalid"
+    >Применить и войти</button>
+
+  </form>
+
+  <div class="rg-Form__href">
+    <span class="rg-href__text">Уже зарегистрированны? &ensp;<a routerLink="/login">Вход</a></span>
+  </div>
+
+</div>

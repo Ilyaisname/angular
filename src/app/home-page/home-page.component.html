@@ -1,0 +1,9 @@
+
+    <h1>Users List:</h1>
+    <button (click)="authService.logout()">Logout</button>
+    <user
+      *ngFor="let el of users"
+      [user]="el"
+    ></user>
+
+

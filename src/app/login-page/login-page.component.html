@@ -1,0 +1,72 @@
+<div class="Form__container">
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <!-- Инпуты  -->
+    <div
+      class="Input"
+      [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+    >
+      <input
+        type="email"
+        placeholder="email"
+        id="email"
+        formControlName="email"
+      />
+      <span
+        class="input-error-message"
+        *ngIf="form.get('email').touched && form.get('email').invalid"
+      >
+        <small *ngIf="form.get('email').errors.required">
+          Поле не должно быть пустым
+        </small>
+        <small *ngIf="form.get('email').errors.email">
+          Введите корректный адресс электронной почты
+        </small>
+      </span>
+    </div>
+    <div
+      class="Input"
+      [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+    >
+      <input
+        type="password"
+        placeholder="input password"
+        id="password"
+        formControlName="password"
+
+      />
+      <span
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+        class="input-error-message"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          Поле не должно быть пустым
+        </small>
+        <small *ngIf="form.get('password').errors.minlength">
+          Пароль должен быть не меньше {{form.get('password').errors.minlength.requiredLength}} символов
+        </small>
+      </span>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn_color-yellow"
+      [disabled]="form.invalid"
+    >Войти в систему</button>
+
+    <a routerLink="/registration" class="Login__reg-href">Зарегистрироваться</a>
+
+  </form>
+    <span
+       style="
+       background: lightcoral;
+       color: #333333;
+       font-size: 20px;
+       display: block;
+       box-sizing: border-box;
+       padding: 1rem;
+      "
+      *ngIf="warning"
+    >
+      {{warning}} !!!
+    </span>
+</div>
